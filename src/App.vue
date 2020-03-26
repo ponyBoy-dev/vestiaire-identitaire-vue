@@ -2,45 +2,57 @@
   <div id="app">
     <Header />
     <b-container>
-          <Form 
-          :prenom="prenom"
-          :pronom="pronom"
-          :pronomTon="pronomTon"
-          @input="onInput"/>
+      <Form 
+      v-if="ready===false"
+      :prenom="prenom" 
+      :pronom="pronom" 
+      :pronomTon="pronomTon" 
+      @input="onInput"
+      @ready="onReady" />
+      <Story
+      v-if="ready===true"
+      :prenom="prenom" :pronom="pronom" :pronomTon="pronomTon"/>
     </b-container>
+    
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Form from "./components/Form";
-
+import Story from "./components/Story";
 
 export default {
   name: "App",
   components: {
     Header,
-    Form
+    Form,
+    Story
   },
-  data(){
+  data() {
     return {
       prenom: "",
       pronom: "",
-      pronomTon: ""
-    }
+      pronomTon: "",
+      ready : false
+    };
   },
-  methods:{
-    onInput(string, what){
+  methods: {
+    onInput(string, what) {
       console.log("parent reçoit : " + string);
-      if (what === 'prenom'){
-        this.prenom = string
+      if (what === "prenom") {
+        this.prenom = string;
       }
-      if (what === 'pronom'){
-        this.pronom = string
+      if (what === "pronom") {
+        this.pronom = string.toLowerCase();
       }
-      if (what === 'pronomTon'){
-        this.pronomTon = string
+      if (what === "pronomTon") {
+        this.pronomTon = string.toLowerCase();
       }
+    },
+    onReady(){
+      console.log("on est prey");
+      this.ready = true;
     }
   }
 };

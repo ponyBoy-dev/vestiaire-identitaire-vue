@@ -121,6 +121,7 @@ export default {
 
       if (this.formVerif()) {
         console.log("cey bon !");
+        this.$emit('ready')
       } else {
         console.log("ratey");
       }

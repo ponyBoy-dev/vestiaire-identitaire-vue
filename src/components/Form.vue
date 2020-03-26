@@ -4,7 +4,7 @@
       <b-row>
         <b-col sm="4">
           <label for="prenom">Ton prénom</label>
-          <b-form-input id="prenom" v-model="prenom" size="sm" type="text" :state="prenomState"></b-form-input>
+          <b-form-input id="prenom" v-bind:value="prenom" @input.native="(e) => updateValue(e.target.value, 'prenom')" size="sm" type="text" :state="prenomState"/>
           <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
         </b-col>
 
@@ -22,7 +22,7 @@
             Ton
             <span class="green">pronom sujet</span>
           </label>
-          <b-form-input id="pronom" v-model="pronom" size="sm" type="text" :state="pronomState"></b-form-input>
+          <b-form-input id="pronom" :value="pronom" @input.native="(e) =>updateValue(e.target.value, 'pronom')" size="sm" type="text" :state="pronomState"></b-form-input>
           <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
         </b-col>
 
@@ -42,7 +42,14 @@
             Ton
             <span class="blue">pronom tonique</span>
           </label>
-          <b-form-input id="pronomTon" v-model="pronomTon" size="sm" type="text" :state="pronomTonState"></b-form-input>
+          <b-form-input
+            id="pronomTon"
+            :value="pronomTon"
+            @input.native="(e)=>updateValue(e.target.value, 'pronomTon')"
+            size="sm"
+            type="text"
+            :state="pronomTonState"
+          ></b-form-input>
           <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
         </b-col>
 
@@ -70,11 +77,13 @@
 
 <script>
 export default {
+  props: {
+    prenom: String,
+    pronom: String,
+    pronomTon: String
+  },
   data() {
     return {
-      prenom: "",
-      pronom: "",
-      pronomTon: "",
       submitted: false,
       champsInvalide: "Il faut remplir ce champs"
     };
@@ -103,6 +112,10 @@ export default {
     }
   },
   methods: {
+    updateValue(string, what){
+        console.log("voici ce que prend updateValue : " + string);
+        this.$emit('input', string, what)
+    },
     onValider() {
       this.submitted = true;
 

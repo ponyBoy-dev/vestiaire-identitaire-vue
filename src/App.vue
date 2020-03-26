@@ -2,7 +2,11 @@
   <div id="app">
     <Header />
     <b-container>
-          <Form />
+          <Form 
+          :prenom="prenom"
+          :pronom="pronom"
+          :pronomTon="pronomTon"
+          @input="onInput"/>
     </b-container>
   </div>
 </template>
@@ -17,6 +21,27 @@ export default {
   components: {
     Header,
     Form
+  },
+  data(){
+    return {
+      prenom: "",
+      pronom: "",
+      pronomTon: ""
+    }
+  },
+  methods:{
+    onInput(string, what){
+      console.log("parent reçoit : " + string);
+      if (what === 'prenom'){
+        this.prenom = string
+      }
+      if (what === 'pronom'){
+        this.pronom = string
+      }
+      if (what === 'pronomTon'){
+        this.pronomTon = string
+      }
+    }
   }
 };
 </script>

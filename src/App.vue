@@ -71,7 +71,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-h1{
+h1,h4{
   font-family: 'Cuprum', sans-serif;
 }
 p,button,label,input{

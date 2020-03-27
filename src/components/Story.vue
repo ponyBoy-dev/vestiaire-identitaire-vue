@@ -37,10 +37,10 @@
         </p>
     </div>
     <div v-if="loterie>-1" :key="loterie" class="flex space-between">
-        <b-button @click="onRetour()">
+        <b-button class="jaune" @click="onRetour()">
             Retour
         </b-button>
-        <b-button @click="onBis()">
+        <b-button class="bleu" @click="onBis()">
             Une Autre !
         </b-button>
     </div>
@@ -116,6 +116,23 @@ p{
 }
 button{
     margin : 2px;
+    
+}
+.jaune{
+    background: #fff810;
+    border: #ffe710;
+    color: black;
+}
+button.jaune:hover{
+    background: #ffdb10;
+    
+}
+.bleu{
+    background: #22b0e7;
+    border: #177ca3;
+}
+button.bleu:hover{
+    background: #1985af;
 }
 .flex{
     display: flex;

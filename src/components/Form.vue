@@ -72,7 +72,7 @@
         </b-col>
 
         <b-col sm="8">
-          <p>Quand tu as rempli tous les champs, appuie sur "Valider".</p>
+          <p>Quand tu as rempli tous les champs, clique sur "Valider".</p>
         </b-col>
       </b-row>
     </b-container>
@@ -144,6 +144,12 @@ export default {
 
 button {
   margin-top: 0.5em;
+  background: #63e89e;
+  border: #58cf8e;
+}
+button:hover{
+    background: #58cf8e;
+    border : #63e89e;
 }
 
 

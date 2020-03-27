@@ -16,6 +16,8 @@
         </b-col>
       </b-row>
 
+      <b-row class="separator"></b-row>
+
       <b-row>
         <b-col sm="4">
           <label for="pronom">
@@ -36,9 +38,11 @@
         </b-col>
       </b-row>
 
+      <b-row class="separator"></b-row>
+
       <b-row>
         <b-col sm="4">
-          <label for="pronom">
+          <label for="pronomTon">
             Ton
             <span class="blue">pronom tonique</span>
           </label>
@@ -136,9 +140,12 @@ export default {
 </script>
 
 <style scoped>
+
+
 button {
   margin-top: 0.5em;
 }
+
 
 .form-control-sm {
   margin-bottom: 0.7em;
@@ -151,5 +158,8 @@ button {
 }
 .blue {
   color: blue;
+}
+.separator{
+    height: 1em;
 }
 </style>

@@ -11,7 +11,8 @@
       @ready="onReady" />
       <Story
       v-if="ready===true"
-      :prenom="prenom" :pronom="pronom" :pronomTon="pronomTon"/>
+      :prenom="prenom" :pronom="pronom" :pronomTon="pronomTon"
+      @retour="onBack"/>
     </b-container>
     
   </div>
@@ -53,18 +54,27 @@ export default {
     onReady(){
       console.log("on est prey");
       this.ready = true;
+    },
+    onBack(){
+      this.ready = false;
     }
   }
 };
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Cuprum|Ubuntu&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1{
+  font-family: 'Cuprum', sans-serif;
+}
+p,button,label,input{
+  font-family: 'Ubuntu', sans-serif;
 }
 </style>

@@ -1,7 +1,14 @@
 <template>
   <div>
     <div v-if="loterie===0">
-      <p>Bonjour, {{prenomMaj}} ! Belle journée aujourd'hui !</p>
+      <p>
+        Laissez-moi vous raconter l'histoire d{{prenomElid}}.
+        <br />
+        {{pronomMaj}} a toujours de bonnes idées (même si parfois, c'est pour faire des bétises).
+        Ses ami&#183;e&#183;s et {{pronom}} aiment faire toutes sortes d'expériences rigolotes. Ce qui ne plait pas toujours à leurs parents.
+        <br/>Mais tant qu{{pronomElid}} ne fait de mal à personne, dans le fond, {{prenomMaj}} sait que sa vie doit avant tout lui plaire à {{pronomTon}}-même. 
+        <br/>{{pronomMaj}} ne laissera personne lui dicter ses choix.
+      </p>
     </div>
 
     <div v-if="loterie===1">
@@ -21,6 +28,21 @@
         <br />
         Je ne vous en parle pas plus longtemps, mais {{prenomMaj}} a plus d’un tour dans son sac !"
       </p>
+    </div>
+
+    <div v-if="loterie===2">
+        <p>
+            Je vous présente {{prenomMaj}}. {{pronomMaj}} aime la musique, jouer sur son portable, 
+            bavarder avec ses potes (parfois même en classe), et des tas d'autres choses encore. 
+        </p>
+    </div>
+    <div v-if="loterie>-1" :key="loterie" class="flex space-between">
+        <b-button @click="onRetour()">
+            Retour
+        </b-button>
+        <b-button @click="onBis()">
+            Une Autre !
+        </b-button>
     </div>
   </div>
 </template>
@@ -45,6 +67,9 @@ export default {
     prenomMaj: function() {
       return this.majusculiser(this.prenom);
     },
+    prenomElid: function() {
+      return this.elision(this.prenomMaj);
+    },
     pronomMaj: function() {
       return this.majusculiser(this.pronom);
     },
@@ -56,6 +81,13 @@ export default {
     }
   },
   methods: {
+    onRetour(){
+        this.$emit('retour')
+    },
+    onBis(){
+        let bis = Math.floor(Math.random() * 2)
+        bis === this.loterie ? this.onBis() : this.loterie = bis;
+    },
     majusculiser(mot) {
       return mot[0].toUpperCase() + mot.slice(-(mot.length - 1));
     },
@@ -76,3 +108,19 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+p{
+    margin-top : 1.5em
+}
+button{
+    margin : 2px;
+}
+.flex{
+    display: flex;
+}
+.space-between{
+    justify-content: space-between;
+}
+</style>

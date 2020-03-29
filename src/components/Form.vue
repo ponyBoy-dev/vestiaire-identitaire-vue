@@ -1,79 +1,88 @@
 <template>
   <div>
     <b-container fluid>
-      <b-row>
-        <b-col sm="4">
-          <label for="prenom">Ton prénom</label>
-          <b-form-input id="prenom" v-bind:value="prenom" @input.native="(e) => updateValue(e.target.value, 'prenom')" size="sm" type="text" :state="prenomState"/>
-          <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
-        </b-col>
-
-        <b-col sm="8">
-          <p>
-            Ici, tu peux essayer différents prénoms ou pronoms, pour voir si ils te conviennent.
-            <br />Entre ceux que tu as envie d'essayer dans le formulaire à gauche.
-          </p>
-        </b-col>
+      <b-row class="flex jcontent-center">
+        <p class="text-align-center">
+          Ici, tu peux essayer différents prénoms et pronoms, pour voir si ils te conviennent.
+          <br />Entre ceux que tu as envie d'essayer dans le formulaire.
+          <br />Quand tu as terminé, clique sur "Valider".
+        </p>
       </b-row>
-
       <b-row class="separator"></b-row>
-
-      <b-row>
-        <b-col sm="4">
-          <label for="pronom">
-            Ton
-            <span class="green">pronom sujet</span>
-          </label>
-          <b-form-input id="pronom" :value="pronom" @input.native="(e) =>updateValue(e.target.value, 'pronom')" size="sm" type="text" :state="pronomState"></b-form-input>
-          <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
-        </b-col>
-
-        <b-col sm="8">
-          <p class="text-align-left">
-            Un
-            <span class="green">pronom sujet</span>, c'est ça :
-            <br />Captain Marvel est super forte,
-            <span class="green">elle</span> a même sauvé la planète !
-          </p>
-        </b-col>
-      </b-row>
-
-      <b-row class="separator"></b-row>
-
-      <b-row>
-        <b-col sm="4">
-          <label for="pronomTon">
-            Ton
-            <span class="blue">pronom tonique</span>
-          </label>
+      <b-row class="flex jcontent-center">
+        <label for="prenom" class="label-margin">Quel prénom veux-tu essayer ?</label>
+        <div>
           <b-form-input
-            id="pronomTon"
-            :value="pronomTon"
-            @input.native="(e)=>updateValue(e.target.value, 'pronomTon')"
+            id="prenom"
+            v-bind:value="prenom"
+            @input.native="(e) => updateValue(e.target.value, 'prenom')"
             size="sm"
             type="text"
-            :state="pronomTonState"
-          ></b-form-input>
-          <b-form-invalid-feedback>{{champsInvalide}}</b-form-invalid-feedback>
+            :state="prenomState"
+          />
+          <b-form-invalid-feedback v-if="prenomState===false">{{champsInvalide}}</b-form-invalid-feedback>
+        </div>
+        
+        
+      </b-row>
+
+      <b-row class="separator"></b-row>
+      <b-row class="flex jcontent-center"><p>Choisis aussi :</p></b-row>
+
+      <b-row>
+        <b-col>
+          <label for="pronom">
+            ton
+            <span class="pill yellow">pronom sujet</span>
+          </label>
+          <div class="flex jcontent-center">
+            <b-form-input
+              id="pronom"
+              :value="pronom"
+              @input.native="(e) =>updateValue(e.target.value, 'pronom')"
+              size="sm"
+              type="text"
+              :state="pronomState"
+            ></b-form-input>
+          </div>
+          <b-form-invalid-feedback v-if="pronomState===false">{{champsInvalide}}</b-form-invalid-feedback>
+
+          <p class="margin-from-input">
+            Un
+            <span class="pill yellow">pronom sujet</span>, c'est ça :
+            <br />
+            <span class="pill yellow">Elle</span> rentre à vélo.
+          </p>
         </b-col>
 
-        <b-col sm="8">
-          <p class="text-align-left">
+        <b-col>
+          <label for="pronomTon">
+            ton
+            <span class="pill blue">pronom tonique</span>
+          </label>
+          <div class="flex jcontent-center">
+            <b-form-input
+              id="pronomTon"
+              :value="pronomTon"
+              @input.native="(e)=>updateValue(e.target.value, 'pronomTon')"
+              size="sm"
+              type="text"
+              :state="pronomTonState"
+            ></b-form-input>
+          </div>
+          <b-form-invalid-feedback v-if="pronomTonState===false">{{champsInvalide}}</b-form-invalid-feedback>
+
+          <p class="margin-from-input">
             Un
-            <span class="blue">pronom tonique</span>, c'est ça :
-            <br />Legolas a un jacuzzi, allons chez
-            <span class="blue">lui</span>.
+            <span class="pill blue">pronom tonique</span>, c'est ça :
+            <br />Il rentre chez 
+            <span class="pill blue">lui</span>.
           </p>
         </b-col>
       </b-row>
-      <b-row>
-        <b-col sm="4">
-          <b-button variant="success" @click="onValider()">Valider</b-button>
-        </b-col>
 
-        <b-col sm="8">
-          <p>Quand tu as rempli tous les champs, clique sur "Valider".</p>
-        </b-col>
+      <b-row class="flex jcontent-center">
+        <b-button variant="success" @click="onValider()">Valider</b-button>
       </b-row>
     </b-container>
   </div>
@@ -116,16 +125,16 @@ export default {
     }
   },
   methods: {
-    updateValue(string, what){
-        console.log("voici ce que prend updateValue : " + string);
-        this.$emit('input', string, what)
+    updateValue(string, what) {
+      console.log("voici ce que prend updateValue : " + string);
+      this.$emit("input", string, what);
     },
     onValider() {
       this.submitted = true;
 
       if (this.formVerif()) {
         console.log("cey bon !");
-        this.$emit('ready')
+        this.$emit("ready");
       } else {
         console.log("ratey");
       }
@@ -140,32 +149,52 @@ export default {
 </script>
 
 <style scoped>
-
-
+input {
+  max-width: 17em;
+}
 button {
   margin-top: 0.5em;
   background: #63e89e;
   border: #58cf8e;
 }
-button:hover{
-    background: #58cf8e;
-    border : #63e89e;
+button:hover {
+  background: #58cf8e;
+  border: #63e89e;
 }
-
-
-.form-control-sm {
-  margin-bottom: 0.7em;
+.invalid-feedback {
+  display: unset;
+}
+.margin-from-input {
+  margin-top: 0.7em;
+}
+.flex {
+  display: flex;
+}
+.jcontent-center {
+  justify-content: center;
 }
 .text-align-left {
   text-align: left;
 }
-.green {
-  color: green;
+.text-align-center {
+  text-align: center;
 }
-.blue {
-  color: blue;
+.label-margin {
+  margin-right: 1em;
 }
-.separator{
-    height: 1em;
+.pill{
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 4px;
+}
+.yellow{
+    background: #fff810;
+}
+.blue{
+    background: #22b0e7;
+}
+.separator {
+  height: 1em;
 }
 </style>

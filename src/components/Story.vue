@@ -28,7 +28,7 @@
         <br />
         même quand ils étaient très loin d{{pronomTonElid}}.
         <br />
-        Je ne vous en parle pas plus longtemps, mais {{prenomMaj}} a plus d’un tour dans son sac !"
+        Je ne vous en parle pas plus longtemps, mais {{prenomMaj}} sait encore beaucoup d'autres choses !"
       </p>
     </div>
 

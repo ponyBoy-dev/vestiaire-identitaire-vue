@@ -1,5 +1,5 @@
 <template>
-  <div class="margin-bottom">
+  <div id="header" class="margin-bottom">
     <div class="flex-center colorful margin radius box-shadow">
       <h1>Vestiaire Identitaire</h1>
     </div>

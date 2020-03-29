@@ -14,7 +14,7 @@
       :prenom="prenom" :pronom="pronom" :pronomTon="pronomTon"
       @retour="onBack"/>
     </b-container>
-    
+    <Footer />
   </div>
 </template>
 
@@ -22,13 +22,15 @@
 import Header from "./components/Header.vue";
 import Form from "./components/Form";
 import Story from "./components/Story";
+import Footer from "./components/Footer"
 
 export default {
   name: "App",
   components: {
     Header,
     Form,
-    Story
+    Story,
+    Footer
   },
   data() {
     return {
@@ -70,8 +72,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  height: 100%;
 }
-h1,h4{
+body,html{
+  height: 100%;
+}
+h1,h4,h6{
   font-family: 'Cuprum', sans-serif;
 }
 p,button,label,input{

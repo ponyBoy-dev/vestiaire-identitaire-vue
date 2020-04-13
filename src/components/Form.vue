@@ -126,17 +126,17 @@ export default {
   },
   methods: {
     updateValue(string, what) {
-      console.log("voici ce que prend updateValue : " + string);
+      //onsole.log("voici ce que prend updateValue : " + string);
       this.$emit("input", string, what);
     },
     onValider() {
       this.submitted = true;
 
       if (this.formVerif()) {
-        console.log("cey bon !");
+        //console.log("cey bon !");
         this.$emit("ready");
       } else {
-        console.log("ratey");
+        //console.log("ratey");
       }
     },
     formVerif() {

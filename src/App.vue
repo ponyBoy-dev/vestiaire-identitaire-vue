@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     onInput(string, what) {
-      console.log("parent reçoit : " + string);
+      //console.log("parent reçoit : " + string);
       if (what === "prenom") {
         this.prenom = string;
       }
@@ -54,7 +54,6 @@ export default {
       }
     },
     onReady(){
-      console.log("on est prey");
       this.ready = true;
     },
     onBack(){

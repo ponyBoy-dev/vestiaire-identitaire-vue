@@ -5,7 +5,7 @@
         Laissez-moi vous parler d{{prenomElid}}.
         <br />
         {{pronomMaj}} a toujours de bonnes idées (même si parfois, c'est pour faire des bétises).
-        Ses ami&#183;e&#183;s et {{pronom}} aiment faire toutes sortes d'expériences rigolotes. Ce qui ne plait pas toujours à leurs parents.
+        Ses ami&#183;e&#183;s et {{pronomTon}} aiment faire toutes sortes d'expériences rigolotes. Ce qui ne plait pas toujours à leurs parents.
         <br />
         Mais tant qu{{pronomElid}} ne fait de mal à personne, dans le fond, {{prenomMaj}} sait que sa vie doit avant tout lui plaire à {{pronomTon}}-même.
         <br />
@@ -41,7 +41,7 @@
         Nuitamment, {{pronom}} se glisse dans la machine, sans voir qu’une guêpe en a profité pour rentrer derrière {{pronomTon}}.
         Juste comme {{pronom}} tape les données spatio-temporelles, la guêpe décide de l’attaquer. Dans la panique, {{prenomMaj}} tape un peu partout, y compris sur quelques boutons auxquels il ne fallait pas toucher.
         Et dans un grand fracas, la machine se met en route alors qu{{pronomElid}} n’a pas du tout terminé la programmation.
-        Quand la machine semble s’être calmée, {{prenomMaj}} en sort prudemment et regarde tout autour d{{pronomTonElid}}.
+        <br/>Quand la machine semble s’être calmée, {{prenomMaj}} en sort prudemment et regarde tout autour d{{pronomTonElid}}.
         <br />
         C’est un désert. A quelques pas, cependant, une forme étrange attire son attention. {{pronomMaj}} s’approche pour regarder et reconnait un nid de vélociraptor. Avec des oeufs dedans !
         (Vous l’ai-je dit ? {{prenomMaj}} est très nerd et s’intéresse énormément à la paléontologie).
@@ -74,7 +74,7 @@
         {{pronomMaj}} tourneboule dans tous les sens sans plus savoir où {{pronom}} va. 
         K-9, n’écoutant que son intelligence artificielle de qualité supérieure, tire comme un fou sur sa laisse, qu{{prenomElid}} n'a heureusement pas lâchée dans la panique. 
         Il réussit à ramener {{prenomMaj}} près de la base. 
-        <br/> Ensemble, les 2 compères parviennent jusqu’à HE-532 et prélèvent leurs échantillons. Ils seront envoyés sur Terre pour analyse avec la prochaine navette interstellaire.
+        <br/> Ensemble, les 2 partenaires parviennent jusqu’à HE-532 et prélèvent leurs échantillons. Ils seront envoyés sur Terre pour analyse avec la prochaine navette interstellaire.
 
       </p>
     </div>
@@ -111,14 +111,14 @@ export default {
   },
   beforeMount() {
     this.loterie = Math.floor(Math.random() * 6);
-    console.log(this.loterie);
+    //console.log(this.loterie);
   },
   computed: {
     prenomMaj: function() {
       return this.majusculiser(this.prenom);
     },
     prenomElid: function() {
-      console.log(this.elision(this.prenomMaj));
+      //console.log(this.elision(this.prenomMaj));
       return this.elision(this.prenomMaj);
     },
     pronomMaj: function() {
